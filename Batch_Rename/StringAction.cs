@@ -11,6 +11,7 @@ namespace Batch_Rename
     public interface StringArgs
     {
         string Details { get; }
+       
     }
 
 

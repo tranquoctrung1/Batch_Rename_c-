@@ -61,28 +61,66 @@ namespace Batch_Rename
                 myArgs.Needle = screen.Neelde;
             }
         }
-        
+
         private string _newcase(string origin)
         {
             var myArgs = Args as NewCaseArgs;
             var needle = myArgs.Needle;
 
-            string result = null;
-            if(needle == "UpperCase")
+            string result = null; 
+
+
+            string[] tokens = origin.Split(new string[] { "\\" }, StringSplitOptions.None);
+            string[] tokendots = tokens[tokens.Length -1 ].Split(new string[] { "." }, StringSplitOptions.None);
+            string extensions = tokendots[tokendots.Length - 1];
+            tokendots[0] = tokendots[0].Trim();
+
+            while(tokendots[0].IndexOf("  ") != -1)
             {
-                result = origin.ToUpper();
+                tokendots[0] = tokendots[0].Replace("  ", " ");
+            }
+
+            string[] chartokens = tokendots[0].Split(new string[] { " " }, StringSplitOptions.None);
+
+            string StringFinal = null;
+
+            if (needle == "UpperCase")
+            {
+                foreach (string index in chartokens)
+                {
+                    StringFinal += index.ToUpper() + " ";
+                }
+                extensions = extensions.ToUpper();
             }
             if(needle == "LowerCase")
             {
-                result = origin.ToLower();
+                foreach (string index in chartokens)
+                {
+                    StringFinal += index.ToLower() + " ";
+                }
+                extensions = extensions.ToLower();
             }
-            if(needle == "Standard")
-            {
-                string[] tokens = origin.Split(new string[] { \ }, StringSplitOptions.None);
-                result = tokens[tokens.Length - 1];
 
+            if (needle == "Standard")
+            {
+                foreach (string index in chartokens)
+                {
+                    string firstchar = index.Substring(0, 1);
+                    firstchar = firstchar.ToUpper();
+                    string temp = index.Remove(0, 1);
+                    temp = temp.ToLower();
+
+                    StringFinal += firstchar + temp + " ";
+                }
             }
-            MessageBox.Show(result);
+
+            for(int i = 0; i <tokens.Length -1; ++i)
+            {
+                result += tokens[i] + "\\";
+            }
+
+            result += StringFinal.Trim() + "." + extensions;
+
             return result ;
         }
     }

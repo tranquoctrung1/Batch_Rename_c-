@@ -7,7 +7,9 @@
         mc:Ignorable="d"
         Title="NewCaseDailog" Height="272.093" Width="273.256" WindowStartupLocation="CenterScreen">
     <Canvas Cursor="" Margin="0,0,0,49">
-        <Label Canvas.Left="10" FontSize="15" FontWeight="Bold" Canvas.Top="38" Width="245" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">New Case Extension</Label>
+
+        <Label Canvas.Left="10" FontSize="15" FontWeight="Bold" Canvas.Top="10" Width="245" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">New Case Extension</Label>
+        <Label Canvas.Left="55" Canvas.Top="40" Width="158">Please tick into circles here</Label>
         <RadioButton Name="UppercaseButton" Canvas.Left="32" Canvas.Top="84" Content="UpperCase"></RadioButton>
         <RadioButton Canvas.Left="33" Canvas.Top="123" Name="LowerCaseButton" Content="LowerCase"></RadioButton>
         <RadioButton Name="Standard"  Canvas.Left="33" Canvas.Top="160" Content="Standard"></RadioButton>
