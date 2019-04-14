@@ -8,7 +8,7 @@
         Title="Batch Remane" Height="450" Width="800" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Canvas>
         <Label Canvas.Left="24" Canvas.Top="10" Width="736" FontSize="30" FontWeight="DemiBold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">BATCH RENAME</Label>
-        <Button Width="145" Height="25" Canvas.Left="10" Canvas.Top="63"  Name="runButton" Click="RunButton_Click">Run Batch Rename</Button>
+        <Button Width="112" Height="25" Canvas.Left="10" Canvas.Top="63"  Name="runButton" Click="RunButton_Click">Start Batch</Button>
         <Label Canvas.Top="97">Select Action:</Label>
         <ComboBox Width="145" Height="30" Name="ActionComboBox" Canvas.Left="84" Canvas.Top="93" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
             <ComboBox.ItemTemplate>

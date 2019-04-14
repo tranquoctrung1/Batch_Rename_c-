@@ -37,6 +37,8 @@ namespace Batch_Rename
                 new ReplaceAction(),
                 new NewCaseAction(),
                 new FullnameNormalizeAction(),
+                new MoveAction(),
+                new UniqueName(),
             };
 
             ActionComboBox.ItemsSource = _property;

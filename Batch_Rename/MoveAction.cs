@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Batch_Rename
 {
@@ -11,9 +12,7 @@ namespace Batch_Rename
     {
         private string _needle;
 
-
-
-        public string Details => $"{Needle}";
+        public string Details => $"Move on {Needle}";
 
         public string Needle
         {
@@ -42,6 +41,9 @@ namespace Batch_Rename
 
         private string _moveon(string origin)
         {
+            var myArgs = Args as MoveArgs;
+            var needle = myArgs.Needle;
+
             string[] tokens = origin.Split(new string[] { "\\" }, StringSplitOptions.None);
             string[] tokendots = tokens[tokens.Length - 1].Split(new string[] { "." }, StringSplitOptions.None);
             string extensions = tokendots[tokendots.Length - 1];
@@ -49,26 +51,43 @@ namespace Batch_Rename
             string[] StringChar = tokendots[0].Split(new string[] { " " }, StringSplitOptions.None);
 
             string temp = null;
+            string StringFinal = null;
+            string result = null;
 
-            foreach(string index in StringChar)
+            foreach (string index in StringChar)
             {
-                if(index.Length == 13)
+                if (index.Length == 13)
                 {
                     char firstchar = index[0];
-                    if(firstchar >= '0' && firstchar <= '9')
+                    if (firstchar >= '0' && firstchar <= '9')
                     {
                         temp = index;
                     }
                 }
             }
 
-            while(tokendots[0].IndexOf(temp) != 1)
+            while (tokendots[0].IndexOf(temp) != -1)
             {
                 tokendots[0] = tokendots[0].Replace(temp, "");
             }
 
+            if (needle == "Head")
+            {
+                StringFinal = temp + " " + tokendots[0];
+            }
+            if (needle == "Tail")
+            {
+                StringFinal = tokendots[0] + " " + temp;
+            }
 
-            return null;
+            for (int i = 0; i < tokens.Length - 1; i++)
+            {
+                result += tokens[i] + "\\";
+            }
+
+            result += StringFinal + "." + extensions;
+
+            return result;
         }
 
         public StringArgs Args { get; set; }

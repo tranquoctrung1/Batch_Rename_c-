@@ -1,0 +1,18 @@
+﻿<Window x:Class="Batch_Rename.ResolveDuplicateDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Batch_Rename"
+        mc:Ignorable="d"
+        Title="ResolveDuplicateDialog" Height="369.767" Width="435.465" WindowStartupLocation="CenterScreen">
+    <Canvas>
+        <Label Canvas.Left="30" Canvas.Top="33" FontSize="25" FontWeight="Bold">RESOLVE DUPLICATE RENAME</Label>
+        <Label Canvas.Left="115" Canvas.Top="81" FontSize="15">Choose one of two solution</Label>
+        <RadioButton Name="AutoInscrease" Canvas.Left="57" Canvas.Top="139">Auto inscrease by file name</RadioButton>
+        <Label Canvas.Left="57" Canvas.Top="190">Rename for name file</Label>
+        <TextBox Name="RenameTextBox" Canvas.Left="57" Canvas.Top="221" Height="28" Width="316" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></TextBox>
+        <Button Name="SaveButton" Canvas.Left="57" Canvas.Top="283" Height="34" Width="123" Click="SaveButton_Click">Save</Button>
+        <Button Name="CancelButton" IsCancel="True" Canvas.Left="239" Canvas.Top="283" Width="134" Height="34">Cancel</Button>
+    </Canvas>
+</Window>
