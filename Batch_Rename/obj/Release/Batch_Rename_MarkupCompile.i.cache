@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\phamq\Desktop\New folder\Batch_Rename\obj\Release\
+C:\Users\React\Desktop\mypro\Batch_Rename\obj\Release\
 Batch_Rename
 none
 false
 TRACE
-C:\Users\phamq\Desktop\New folder\Batch_Rename\App.xaml
-7-742453835
+C:\Users\React\Desktop\mypro\Batch_Rename\App.xaml
+8-330590200
 
-22-1935044964
+24-392177467
 14-1175798665
-FullnameNormalizeDialog.xaml;MainWindow.xaml;MoveDialog.xaml;NewCaseDialog.xaml;ReplaceDialog.xaml;ResolveDuplicateDialog.xaml;UniqueNameDialog.xaml;
+FullnameNormalizeDialog.xaml;MainWindow.xaml;MoveDialog.xaml;NewCaseDialog.xaml;RemoveActionDialog.xaml;ReplaceDialog.xaml;ResolveDuplicateDialog.xaml;UniqueNameDialog.xaml;
 
-True
+False
 

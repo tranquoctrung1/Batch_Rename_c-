@@ -40,6 +40,7 @@ namespace Batch_Rename
                 new FullnameNormalizeAction(),
                 new MoveAction(),
                 new UniqueName(),
+                new RemoveAction(),
             };
 
             ActionComboBox.ItemsSource = _property;
@@ -50,18 +51,11 @@ namespace Batch_Rename
 
         private void AddAction_Click(object sender, RoutedEventArgs e)
         {
-            if(ActionListBox.SelectedIndex==-1)
-            {
-                this.Error("Bạn chưa chọn item nào!");
-            }
-            else
-            {
-                var property = ActionComboBox.SelectedItem as StringAction;
+            var property = ActionComboBox.SelectedItem as StringAction;
 
-                var instance = property.Clone();
+            var instance = property.Clone();
 
-                ActionListBox.Items.Add(instance);
-            }
+            ActionListBox.Items.Add(instance);
            
         }
 
@@ -86,7 +80,6 @@ namespace Batch_Rename
             }
         }
 
-
         private void Loadfoder_Click(object sender, RoutedEventArgs e)
         {
             FolderBrowserDialog screen = new FolderBrowserDialog();
@@ -101,9 +94,6 @@ namespace Batch_Rename
                 }
             }
         }
-
-
-
 
         private void RunButton_Click(object sender, RoutedEventArgs e)
         {
@@ -132,17 +122,11 @@ namespace Batch_Rename
                 foder.MoveTo(result);
             }
 
-
-
             System.Windows.MessageBox.Show("All Done");
         }
 
-       
-
         private void RemoveButon_Click(object sender, RoutedEventArgs e)
         {
-            
-
             if (ActionListBox.SelectedIndex < 0)
             {
                 this.Error("Bạn chưa chọn item nào!");

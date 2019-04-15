@@ -50,7 +50,7 @@ namespace Batch_Rename
 
             string[] StringChar = tokendots[0].Split(new string[] { " " }, StringSplitOptions.None);
 
-            string temp = null;
+            string temp = "  ";
             string StringFinal = null;
             string result = null;
 
@@ -58,6 +58,7 @@ namespace Batch_Rename
             {
                 if (index.Length == 13)
                 {
+
                     char firstchar = index[0];
                     if (firstchar >= '0' && firstchar <= '9')
                     {
@@ -70,6 +71,8 @@ namespace Batch_Rename
             {
                 tokendots[0] = tokendots[0].Replace(temp, "");
             }
+
+            StringFinal = tokendots[0];
 
             if (needle == "Head")
             {
@@ -85,9 +88,19 @@ namespace Batch_Rename
                 result += tokens[i] + "\\";
             }
 
+            if(tokendots.Length < 2)
+            {
+                extensions = " ";
+            }
+
             result += StringFinal + "." + extensions;
 
-            return result;
+            while(result.IndexOf("  ") != -1)
+            {
+                result = result.Replace("  ", " ");
+            }
+
+            return result.Trim();
         }
 
         public StringArgs Args { get; set; }

@@ -10,14 +10,14 @@
         <Label Canvas.Left="24" Canvas.Top="10" Width="736" FontSize="30" FontWeight="DemiBold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">BATCH RENAME</Label>
         <Button Width="112" Height="25" Canvas.Left="10" Canvas.Top="63"  Name="runButton" Click="RunButton_Click">Start Batch</Button>
         <Label Canvas.Top="97">Select Action:</Label>
-        <ComboBox Width="145" Height="30" Name="ActionComboBox" Canvas.Left="84" Canvas.Top="93" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+        <ComboBox Width="129" Height="30" Name="ActionComboBox" Canvas.Left="84" Canvas.Top="93" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" SelectedIndex="0" IsEnabled="True">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock  Name="textblock11" Text="{Binding Name}"></TextBlock>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <Button Width="36" Height="30" Canvas.Left="234" Canvas.Top="93" Name="AddAction" Click="AddAction_Click">Add</Button>
+        <Button Width="36" Height="30" Canvas.Left="218" Canvas.Top="93" Name="AddAction" Click="AddAction_Click">Add</Button>
         <ListBox Name="ActionListBox" Height="277" Width="306" Canvas.Left="10" Canvas.Top="132">
             <ListBox.ContextMenu>
                 <ContextMenu>
@@ -55,6 +55,6 @@
                 </Canvas>
             </TabItem>
         </TabControl>
-        <Button x:Name="RemoveButon" Content="Remove" Click="RemoveButon_Click" Canvas.Left="275" Canvas.Top="93" Width="41" Height="29"/>
+        <Button x:Name="RemoveButon" Content="Remove" Click="RemoveButon_Click" Canvas.Left="259" Canvas.Top="93" Width="57" Height="30" RenderTransformOrigin="-0.121,0.493"/>
     </Canvas>
 </Window>
