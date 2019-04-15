@@ -95,6 +95,7 @@
     <Compile Include="UniqueNameDialog.xaml.cs">
       <DependentUpon>UniqueNameDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WindowExtension.cs" />
     <Page Include="FullnameNormalizeDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -36,7 +36,7 @@ namespace Batch_Rename
         public event PropertyChangedEventHandler PropertyChanged;
     }
 
-    public  class FullnameNormalizeAction: StringAction
+    public class FullnameNormalizeAction : StringAction
     {
         public string Name => "Fullname Normalize Action";
 

@@ -50,11 +50,19 @@ namespace Batch_Rename
 
         private void AddAction_Click(object sender, RoutedEventArgs e)
         {
-            var property = ActionComboBox.SelectedItem as StringAction;
+            if(ActionListBox.SelectedIndex==-1)
+            {
+                this.Error("Bạn chưa chọn item nào!");
+            }
+            else
+            {
+                var property = ActionComboBox.SelectedItem as StringAction;
 
-            var instance = property.Clone();
+                var instance = property.Clone();
 
-            ActionListBox.Items.Add(instance);
+                ActionListBox.Items.Add(instance);
+            }
+           
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -78,6 +86,25 @@ namespace Batch_Rename
             }
         }
 
+
+        private void Loadfoder_Click(object sender, RoutedEventArgs e)
+        {
+            FolderBrowserDialog screen = new FolderBrowserDialog();
+            if (screen.ShowDialog() == DialogResult.OK)
+            {
+                string[] dirs = Directory.GetDirectories(screen.SelectedPath);
+           
+                foreach (string dir in dirs)
+                {
+                 
+                    FolderListView.Items.Add(dir);
+                }
+            }
+        }
+
+
+
+
         private void RunButton_Click(object sender, RoutedEventArgs e)
         {
             foreach(string filename in FileListView.Items)
@@ -92,7 +119,38 @@ namespace Batch_Rename
                 file.MoveTo(result);
             }
 
+
+            foreach (string fodername in FolderListView.Items)
+            {
+                string result = fodername;
+                foreach (StringAction action in ActionListBox.Items)
+                {
+                    result = action.Procesor.Invoke(result);
+                }
+
+                var foder = new FileInfo(fodername);
+                foder.MoveTo(result);
+            }
+
+
+
             System.Windows.MessageBox.Show("All Done");
+        }
+
+       
+
+        private void RemoveButon_Click(object sender, RoutedEventArgs e)
+        {
+            
+
+            if (ActionListBox.SelectedIndex < 0)
+            {
+                this.Error("Bạn chưa chọn item nào!");
+            }
+            else
+            {
+                ActionListBox.Items.RemoveAt(ActionListBox.SelectedIndex);
+            }
         }
     }
 }

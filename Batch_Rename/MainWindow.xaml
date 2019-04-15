@@ -13,12 +13,12 @@
         <ComboBox Width="145" Height="30" Name="ActionComboBox" Canvas.Left="84" Canvas.Top="93" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Name}"></TextBlock>
+                    <TextBlock  Name="textblock11" Text="{Binding Name}"></TextBlock>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
         <Button Width="36" Height="30" Canvas.Left="234" Canvas.Top="93" Name="AddAction" Click="AddAction_Click">Add</Button>
-        <ListBox Name="ActionListBox" Height="277" Width="260" Canvas.Left="10" Canvas.Top="132">
+        <ListBox Name="ActionListBox" Height="277" Width="306" Canvas.Left="10" Canvas.Top="132">
             <ListBox.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Edit" Click="MenuItem_Click">
@@ -48,12 +48,13 @@
             </TabItem>
             <TabItem Header="Folder">
                 <Canvas>
-                    <Button Height="27" Width="134" Canvas.Left="10" Canvas.Top="10">
+                    <Button Height="27" Width="134" Canvas.Left="10" Canvas.Top="10" Name="loadfoder" Click="Loadfoder_Click">
                         Load Folder
                     </Button>
                     <ListView Name="FolderListView" Width="330" Height="236" RenderTransformOrigin="0.92,1.108" Canvas.Left="10" Canvas.Top="42"></ListView>
                 </Canvas>
             </TabItem>
         </TabControl>
+        <Button x:Name="RemoveButon" Content="Remove" Click="RemoveButon_Click" Canvas.Left="275" Canvas.Top="93" Width="41" Height="29"/>
     </Canvas>
 </Window>
