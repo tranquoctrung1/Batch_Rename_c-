@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -45,6 +46,8 @@ namespace Batch_Rename
 
         }
 
+        static public System.Windows.Forms.DialogResult DialogResult { get; set; }
+
         private void AddAction_Click(object sender, RoutedEventArgs e)
         {
             var property = ActionComboBox.SelectedItem as StringAction;
@@ -62,12 +65,12 @@ namespace Batch_Rename
 
         private void LoadFiles_Click(object sender, RoutedEventArgs e)
         {
-            var screen = new OpenFileDialog();
-            screen.Multiselect = true;
+            FolderBrowserDialog screen = new FolderBrowserDialog();
 
-            if(screen.ShowDialog() == true)
+            if(screen.ShowDialog() == DialogResult.OK)
             {
-                foreach(var file in screen.FileNames)
+                string[] Files = Directory.GetFiles(screen.SelectedPath);
+                foreach(var file in Files)
                 {
                     FileListView.Items.Add(file);
                 }
@@ -89,7 +92,7 @@ namespace Batch_Rename
                 file.MoveTo(result);
             }
 
-            MessageBox.Show("All Done");
+            System.Windows.MessageBox.Show("All Done");
         }
     }
 }
