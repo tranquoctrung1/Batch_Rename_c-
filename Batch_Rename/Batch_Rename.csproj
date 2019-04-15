@@ -83,6 +83,10 @@
     <Compile Include="NewCaseDialog.xaml.cs">
       <DependentUpon>NewCaseDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RemoveAction.cs" />
+    <Compile Include="RemoveActionDialog.xaml.cs">
+      <DependentUpon>RemoveActionDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ReplaceAction.cs" />
     <Compile Include="ReplaceDialog.xaml.cs">
       <DependentUpon>ReplaceDialog.xaml</DependentUpon>
@@ -117,6 +121,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="NewCaseDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RemoveActionDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -10,7 +10,7 @@
         <Label Canvas.Left="30" Canvas.Top="33" FontSize="25" FontWeight="Bold">RESOLVE DUPLICATE RENAME</Label>
         <Label Canvas.Left="115" Canvas.Top="81" FontSize="15">Choose one of two solution</Label>
         <RadioButton Name="AutoInscrease" Canvas.Left="57" Canvas.Top="139">Auto inscrease by file name</RadioButton>
-        <Label Canvas.Left="57" Canvas.Top="190">Rename for name file</Label>
+        <Label Canvas.Left="57" Canvas.Top="190">Rename for name file (file name.extensions)</Label>
         <TextBox Name="RenameTextBox" Canvas.Left="57" Canvas.Top="221" Height="28" Width="316" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></TextBox>
         <Button Name="SaveButton" Canvas.Left="57" Canvas.Top="283" Height="34" Width="123" Click="SaveButton_Click">Save</Button>
         <Button Name="CancelButton" IsCancel="True" Canvas.Left="239" Canvas.Top="283" Width="134" Height="34">Cancel</Button>

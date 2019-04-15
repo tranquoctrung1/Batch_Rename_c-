@@ -12,8 +12,6 @@ namespace Batch_Rename
     {
         private string _needle;
 
-
-
         public string Details => $"New Case with {Needle}";
 
         public string Needle
@@ -112,11 +110,6 @@ namespace Batch_Rename
 
                 result += StringFinal.Trim() + "." + extensions;
             }
-
-
-
-
-            
 
             return result ;
         }

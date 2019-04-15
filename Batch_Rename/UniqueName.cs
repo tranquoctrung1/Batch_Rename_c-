@@ -59,43 +59,53 @@ namespace Batch_Rename
 
             string result = origin.Replace(needle, hammer);
 
-            if (System.IO.File.Exists(result))
+            if (origin != result)
             {
                 MessageBox.Show("File name is existed!");
                 var screen = new ResolveDuplicateDialog(Args as UniqueNameArgs);
 
                 if (screen.ShowDialog() == true)
                 {
+                    MessageBox.Show($"We are working on {origin} file");
                     if (screen.Hammer == "1")
                     {
-                        for (int i = 1; System.IO.File.Exists(result) == true; i++)
+                        for (int i = 1; ; i++)
                         {
-                            hammer = hammer + $" ({i})";
+                            string[] tokens = hammer.Split(new string[] { "." }, StringSplitOptions.None);
+                            string extensions = tokens[tokens.Length - 1];
+                            hammer = tokens[0] +$" ({i})"+ "." + extensions;
+                            MessageBox.Show(hammer);
                             result = origin.Replace(needle, hammer);
-                            if(hammer.IndexOf($" ({i})") != -1)
+                            if (result != hammer && System.IO.File.Exists(result) == false)
                             {
-                                hammer = hammer.Replace($" ({i})", "");
+                                break;
+                            }
+                            else
+                            {
+                                if (hammer.IndexOf($" ({i})") != -1)
+                                {
+                                    hammer = hammer.Replace($" ({i})", "");
+                                }
                             }
                         }
                     }
                     else
                     {
                         hammer = screen.Hammer;
-                        result = origin.Replace(needle, hammer);  
-                        while(System.IO.File.Exists(result))
+                        result = origin.Replace(needle, hammer);
+                        while (System.IO.File.Exists(result) == true || result == origin)
                         {
                             MessageBox.Show("File name is existed!");
-                           var screen2 = new ResolveDuplicateDialog(Args as UniqueNameArgs);
-                           if (screen2.ShowDialog() == true)
-                           {
+                            var screen2 = new ResolveDuplicateDialog(Args as UniqueNameArgs);
+                            if (screen2.ShowDialog() == true)
+                            {
                                 hammer = screen2.Hammer;
                                 result = origin.Replace(needle, hammer);
-                           }
+                            }
                         }
                     }
                 }
             }
-
             return result;
         }
 

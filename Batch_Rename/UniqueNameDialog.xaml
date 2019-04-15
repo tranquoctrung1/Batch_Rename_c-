@@ -8,9 +8,9 @@
         Title="UniqueNameDialog" Height="390.698" Width="398.837" WindowStartupLocation="CenterScreen">
     <Canvas>
         <Label Canvas.Left="38" Canvas.Top="25" Width="307" FontSize="25" FontWeight="Bold">UNIQUE NAME ACTION</Label>
-        <Label RenderTransformOrigin="0.661,4.798" Canvas.Left="52" Canvas.Top="93">Enter file name to rename</Label>
+        <Label RenderTransformOrigin="0.661,4.798" Canvas.Left="52" Canvas.Top="93">Enter file name to rename (file name.extensions)</Label>
         <TextBox Name="NeedleTextBox" Canvas.Left="52" Canvas.Top="124" Height="30" Width="313" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
-        <Label Canvas.Left="52" Canvas.Top="179">Enter string to replace for file name</Label>
+        <Label Canvas.Left="52" Canvas.Top="179">Enter string to replace for file name (file name.extensions)</Label>
         <TextBox Name="HammerTextBox" Canvas.Left="52" Canvas.Top="210" Height="32" Width="313" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
         <Button Name="SaveButton" Width="122" Height="33" Canvas.Left="52" Canvas.Top="267" Click="SaveButton_Click">Save</Button>
         <Button Name="CancelButton" Width="121" Height="33" Canvas.Left="244" Canvas.Top="267" IsCancel="True">Cancel</Button>
