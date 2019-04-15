@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
 namespace Batch_Rename
 {
@@ -135,6 +136,56 @@ namespace Batch_Rename
             {
                 ActionListBox.Items.RemoveAt(ActionListBox.SelectedIndex);
             }
+        }
+
+        List<StringAction> list = null;
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog screen = new OpenFileDialog();
+
+            if(screen.ShowDialog() == true)
+            {
+                string url = screen.FileName;
+
+                using (StreamWriter wr = new StreamWriter(url))
+                {
+                    foreach (StringAction action in ActionListBox.Items)
+                    {
+                        string createText = action.Name + " - " + action.Args.Details;
+                        wr.WriteLine(createText);
+                        list.Add(action);
+                        System.Windows.MessageBox.Show(list.ToString());
+                    }
+                }
+                System.Windows.MessageBox.Show("Finish!");
+            }   
+
+        }
+
+        private void ExportButton_Click(object sender, RoutedEventArgs e)
+        {
+            var screen = new OpenFileDialog();
+
+            if(screen.ShowDialog() == true)
+            {
+                var url = screen.FileName;
+
+                ReplaceAction action = new ReplaceAction()
+                {
+                };
+
+
+                using (StreamReader sr = new StreamReader(url))
+                {
+                    int i = 0;
+                    while (sr.Peek() >= 0)
+                    {
+                        ActionListBox.Items.Add(list[0].Name.ToString());
+                    }
+                }
+            }
+            System.Windows.MessageBox.Show("Exported!");
         }
     }
 }

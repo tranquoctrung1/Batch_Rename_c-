@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Batch_Rename"
         mc:Ignorable="d"
-        Title="Batch Remane" Height="450" Width="800" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+        Title="Batch Remane" Height="511.047" Width="800" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Canvas>
         <Label Canvas.Left="24" Canvas.Top="10" Width="736" FontSize="30" FontWeight="DemiBold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">BATCH RENAME</Label>
         <Button Width="112" Height="25" Canvas.Left="10" Canvas.Top="63"  Name="runButton" Click="RunButton_Click">Start Batch</Button>
@@ -56,5 +56,7 @@
             </TabItem>
         </TabControl>
         <Button x:Name="RemoveButon" Content="Remove" Click="RemoveButon_Click" Canvas.Left="259" Canvas.Top="93" Width="57" Height="30" RenderTransformOrigin="-0.121,0.493"/>
+        <Button Name="SaveButton" Width="132" Height="25" Click="SaveButton_Click" Canvas.Left="10" Canvas.Top="430" >Save</Button>
+        <Button Name="ExportButton" Width="132" Height="25" Click="ExportButton_Click" Canvas.Left="184" Canvas.Top="430">Export</Button>
     </Canvas>
 </Window>
