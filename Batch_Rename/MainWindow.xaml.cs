@@ -138,8 +138,6 @@ namespace Batch_Rename
             }
         }
 
-        List<StringAction> list = null;
-
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog screen = new OpenFileDialog();
@@ -154,8 +152,6 @@ namespace Batch_Rename
                     {
                         string createText = action.Name + " - " + action.Args.Details;
                         wr.WriteLine(createText);
-                        list.Add(action);
-                        System.Windows.MessageBox.Show(list.ToString());
                     }
                 }
                 System.Windows.MessageBox.Show("Finish!");
@@ -171,21 +167,106 @@ namespace Batch_Rename
             {
                 var url = screen.FileName;
 
-                ReplaceAction action = new ReplaceAction()
-                {
-                };
-
-
                 using (StreamReader sr = new StreamReader(url))
                 {
-                    int i = 0;
                     while (sr.Peek() >= 0)
                     {
-                        ActionListBox.Items.Add(list[0].Name.ToString());
+                        string[] tokens_sub = sr.ReadLine().Split(new string[] { " - " }, StringSplitOptions.None);
+                        string[] tokens_space = tokens_sub[0].Split(new string[] { " " }, StringSplitOptions.None);
+                        string[] tokens_Args = tokens_sub[1].Split(new string[] { " " }, StringSplitOptions.None);
+
+                        string first_word = tokens_space[0];
+
+                        if(first_word == "Replace" )
+                        {                         
+                            var _replaceArgs = new ReplaceArgs();
+                            _replaceArgs.Needle = tokens_Args[1];
+                            _replaceArgs.Hammer = tokens_Args[3];
+
+                            var _action  = new ReplaceAction();
+
+                            var _replacAction = _action as StringAction;
+
+                            var _cloneReplaceAction = _replacAction.Clone();
+                            _cloneReplaceAction.Args = _replaceArgs;
+
+                            ActionListBox.Items.Add(_cloneReplaceAction);
+                        }
+                        else if(first_word == "New")
+                        {
+                            var _newcaseArgs = new NewCaseArgs();
+                            _newcaseArgs.Needle = tokens_Args[3];
+
+                            var _action = new NewCaseAction();
+
+                            var _newcaseAction = _action as StringAction;
+
+                            var _cloneNewCaseAction = _newcaseAction.Clone();
+                            _cloneNewCaseAction.Args = _newcaseArgs;
+
+                            ActionListBox.Items.Add(_cloneNewCaseAction);
+                        }
+                        else if(first_word == "Fullname")
+                        {
+                            var _fullnameArgs = new FullnameNormalizeArgs();
+                            _fullnameArgs.Needle = tokens_Args[3];
+
+                            var _action = new FullnameNormalizeAction();
+
+                            var _fullnameAction = _action as StringAction;
+
+                            var _cloneFullNameAction = _fullnameAction.Clone();
+                            _cloneFullNameAction.Args = _fullnameArgs;
+
+                            ActionListBox.Items.Add(_cloneFullNameAction);
+                        }
+                        else if(first_word == "Move")
+                        {
+                            var _moveArgs = new MoveArgs();
+                            _moveArgs.Needle = tokens_Args[2];
+
+                            var _action = new MoveAction();
+
+                            var _moveAction = _action as StringAction;
+
+                            var _cloneMoveAction = _moveAction.Clone();
+                            _cloneMoveAction.Args = _moveArgs;
+
+                            ActionListBox.Items.Add(_cloneMoveAction);
+                        }
+                        else if(first_word == "Unique")
+                        {
+                            var _uniqueArgs = new UniqueNameArgs();
+                            _uniqueArgs.Needle = tokens_Args[1];
+                            _uniqueArgs.Hammer = tokens_Args[3];
+
+                            var _action = new UniqueName();
+
+                            var _uniqueAction = _action as StringAction;
+
+                            var _cloneUniqueAction = _uniqueAction.Clone();
+                            _cloneUniqueAction.Args = _uniqueArgs;
+
+                            ActionListBox.Items.Add(_cloneUniqueAction);
+                        }
+                        else
+                        {
+                            var _removeArgs = new RemoveActionArgs();
+                            _removeArgs.Needle = tokens_Args[2];
+
+                            var _action = new RemoveAction();
+
+                            var _removeAction = _action as StringAction;
+
+                            var _cloneRemoveAction = _removeAction.Clone();
+                            _cloneRemoveAction.Args = _removeArgs;
+
+                            ActionListBox.Items.Add(_cloneRemoveAction);
+                        }
                     }
                 }
+                System.Windows.MessageBox.Show("Exported!");
             }
-            System.Windows.MessageBox.Show("Exported!");
         }
     }
 }
