@@ -74,8 +74,8 @@ namespace Batch_Rename
                             string[] tokens = hammer.Split(new string[] { "." }, StringSplitOptions.None);
                             string extensions = tokens[tokens.Length - 1];
                             hammer = tokens[0] +$" ({i})"+ "." + extensions;
-                            MessageBox.Show(hammer);
                             result = origin.Replace(needle, hammer);
+                            MessageBox.Show($"File name was changed: {result}");
                             if (result != hammer && System.IO.File.Exists(result) == false)
                             {
                                 break;
